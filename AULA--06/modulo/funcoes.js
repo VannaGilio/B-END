@@ -66,7 +66,7 @@ const comandosBasicos = function (){
     console.table(listaDeProdutos)
     
     //Exibe a quantidade de itens que tem no array
-    console.log(listaDeProdutos.length)
+    console.log(listaDeProdutos.lengtah)
 }
 
 comandosBasicos()
