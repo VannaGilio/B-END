@@ -7,7 +7,7 @@
 
 /**
  * [] --> ARRAY (É uma lista de dados)
- * {} --> JSON (É uma forma de organizar dados)
+ * {} --> JSON (É uma forma de organizar dados) Atributo: Valor -> não existe indice, não existe REPETIÇÃOO
  **/
 
 const comandosBasicos = function (){
@@ -141,6 +141,92 @@ const filtrarProduto = function(nomeProduto){
     return status
 }
 
-console.log(filtrarProduto('placa'))
+const conceitoJSON = function(){
+
+    //Criando array e colocando dois objetos dentro do mesmo
+    let listaDeClientes = []
+
+    //PRIMEIRA FORMA de criar um objeto do tipo JSON
+    let cliente = {nome: 'Eduarda de Jesus', telefone: '11916577992', email: 'dudinha@gmail.com'}
+
+    //Exibe todos os atributos do objeto JSON *****
+    console.log(cliente)
+    console.table(cliente)
+
+    //Exibir só um atributo JSON *****
+    console.log(cliente.nome)
+
+    //SEGUNDA FORMA de criar um objeto do tipo JSON
+    let cliente2 = {}
+    cliente2.nome = 'Felipe Viera'
+    cliente2.telefone = '1195246781'
+    cliente2.email = 'felipinho@gmail.com'
+    
+    //exibir o JSON cliente2 *****
+    console.log(cliente2)
+
+    //Adiciona no array os objetos do JSON *****
+    listaDeClientes.push(cliente, cliente2)
+
+    //Exibe os dados de array referente a um indice, e trazendo pelo atributo do JSON
+    console.log(listaDeClientes[1].nome)
+
+    //Percorre o array de clientes e retorna somente o nome dos clientes
+    listaDeClientes.forEach(function(item){
+        console.log(item.email)
+    })
+}
+
+const cadastroDeProdutos = function(){
+
+//ARRAY CADASTRO DE MARCAS | ENTIDADES (BD)
+    let marcas = []
+    marcas.push(
+                {nome: 'Dell', telefone: '(11)95249-7092', email: 'dell@gmail.com'},
+                {nome: 'Microsoft', telefone: '(11)95247-9856', email: 'microsoft@gmail.com'},
+                {nome: 'LG', telefone: '(11)95247-7092', email: 'lg@lg.com.br'},
+                {nome: 'Asus', telefone: '(11)95647-2232', email: 'asus@asus.com.br'}
+            )
+
+//ARRAY CADASTRO DE CATEGORIAS | ENTIDADES (BD)
+    let categorias = []
+    categorias.push(
+                {nome: 'Hardware'},
+                {nome: 'Periféricos'},
+                {nome: 'Smart Home'},
+                {nome: 'Games'},
+                {nome: 'Computadores'},
+                {nome: 'Escritório'}
+            )
+
+//ARRAY CADASTRO DAS CORES | ENTIDADES (BD)
+    let cores = []
+    cores.push(
+                {nome: 'Preto', hexadecimal: '#00000'},
+                {nome: 'Branco', hexadecimal: '#ffffff'},
+                {nome: 'Cinza', hexadecimal: '#999896'},
+                {nome: 'Azul', hexadecimal: '#083fa6'},
+    )
+    
+    let produtos = []
+    produtos.push(
+                {
+                    nome: 'Mouse', 
+                    descricao: 'Mouse Óptico, 7700 DPI, com fio', 
+                    preco: '80.50', 
+                    quantidade: 50, 
+                    marca: marcas[0],
+                    categoria: categorias[
+                        categorias[1],
+                        categorias[5]
+                    ],
+                    cor: cores
+                }
+    )
+}
+
+//console.log(filtrarProduto('placa'))
 //percorrerArray()
 //comandosBasicos()
+// conceitoJSON()
+cadastroDeProdutos()
