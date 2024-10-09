@@ -302,18 +302,32 @@ const pesquisarProduto = function (nomeProduto){
 
 // console.log(pesquisarProduto(''))
 
+//Exibir bonitinho no console.log 
 const listarProdutos = function(nomeProduto){
     let nome = String(nomeProduto).toUpperCase()
     let produtos = pesquisarProduto(nome)
+    let status = false;
 
     if(produtos != false){
+        status = true
         produtos.forEach(function(item){
             console.log(`Nome do Produto: ${item.nome}`)
             console.log(`Detalhes do Produto: ${item.descricao}`)
             console.log(`Quantidade em estoque: ${item.quantidade}`)
             console.log(`Preço do Produto: R$ ${item.preco}`)
+
+            item.marca.forEach(function(itemMarca){
+                console.log(`-- Marca: ${itemMarca.nome}`)
+            })
+            item.cor.forEach(function(itemCor){
+                console.log(`-- Cor: ${itemCor.nome}`)
+            })
+            item.categoria.forEach(function(itemCategoria){
+                console.log(`-- Categoria: ${itemCategoria.nome}`)
+            })
         })
     }
+    return status
 }
 
 //console.log(filtrarProduto('placa'))
@@ -322,4 +336,4 @@ const listarProdutos = function(nomeProduto){
 // conceitoJSON()
 // cadastroDeProdutos()
 // console.log(pesquisarProduto(''))
-listarProdutos('teclado')
+console.log (listarProdutos('monitor'))
