@@ -66,7 +66,7 @@ const comandosBasicos = function (){
     console.table(listaDeProdutos)
     
     //Exibe a quantidade de itens que tem no array
-    console.log(listaDeProdutos.lengtah)
+    console.log(listaDeProdutos.length)
 }
 
 const percorrerArray = function(){
@@ -215,18 +215,111 @@ const cadastroDeProdutos = function(){
                     descricao: 'Mouse Óptico, 7700 DPI, com fio', 
                     preco: '80.50', 
                     quantidade: 50, 
-                    marca: marcas[0],
-                    categoria: categorias[
+                    marca: [
+                        marcas[0]
+                            ],
+                    categoria: [
                         categorias[1],
                         categorias[5]
-                    ],
+                                ],
                     cor: cores
+                },
+                {
+                    nome: 'Teclado',
+                    descricao: 'Teclado com fio, RGB',
+                    preco: '200',
+                    quantidade: 35,
+                    marca: [
+                        marcas[1]
+                    ],
+                    categoria: [
+                        categorias[1],
+                        categorias[2],
+                        categorias[3],
+                        categorias[5]
+                    ],
+                    cor: [
+                        cores[0],
+                        cores[1]
+                    ]
+                },
+                {
+                    nome: 'Televisão',
+                    descricao: '40 polegadas, smart tv',
+                    preco: '2.000',
+                    quantidade: 10,
+                    marca: [
+                        marcas[2]
+                    ],
+                    categoria: [
+                        categorias[2]
+                    ],
+                    cor: [
+                        cores[0]
+                    ] 
+                },
+                {
+                    nome: 'Teclado',
+                    descricao: 'Teclado sem fio, RGB',
+                    preco: '250',
+                    quantidade: 20,
+                    marca: [
+                        marcas[1]
+                    ],
+                    categoria:[
+                        categorias[1],
+                        categorias[2],
+                        categorias[3],
+                        categorias[5]
+                    ],
+                    cor: [
+                        cores[0],
+                        cores[1]
+                    ]
                 }
     )
+
+    return produtos
+}
+
+//filtrar produtos (como uma pesquisa pensando em front)
+const pesquisarProduto = function (nomeProduto){
+    let listaDeProdutos = cadastroDeProdutos()
+    let nome = String(nomeProduto).toUpperCase()
+    let produtosEncontrados = []
+
+    listaDeProdutos.forEach(function(item){
+        if(String(item.nome).toUpperCase() == nome){
+            produtosEncontrados.push(item)
+        }
+    })
+    if(produtosEncontrados.length > 0){
+        return produtosEncontrados
+    }else{
+        return false
+    }
+}
+
+// console.log(pesquisarProduto(''))
+
+const listarProdutos = function(nomeProduto){
+    let nome = String(nomeProduto).toUpperCase()
+    let produtos = pesquisarProduto(nome)
+
+    if(produtos != false){
+        produtos.forEach(function(item){
+            console.log(`Nome do Produto: ${item.nome}`)
+            console.log(`Detalhes do Produto: ${item.descricao}`)
+            console.log(`Quantidade em estoque: ${item.quantidade}`)
+            console.log(`Preço do Produto: R$ ${item.preco}`)
+        })
+    }
 }
 
 //console.log(filtrarProduto('placa'))
 //percorrerArray()
 //comandosBasicos()
 // conceitoJSON()
-cadastroDeProdutos()
+// cadastroDeProdutos()
+// console.log(pesquisarProduto(''))
+listarProdutos('teclado')
